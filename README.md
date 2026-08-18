@@ -235,10 +235,10 @@ command: ["sh", "-c", "while true; do python -m src; sleep 300; done"]  # каж
 ## 📬 Контакты и поддержка
 
 - 👨‍💻 **Разработчик**: Дмитрий Никульшин
-- 🌐 **Портфолио**: [nikulshin-dev.ru](https://nikulshin-dev.ru)
+- 🌐 **Портфолио**: [nikulshin-dev.ru](https://dnikulshin.ru)
 - 💬 **Telegram**: [@nikulshin_dev](https://t.me/nikulshin_dev)
 - 🐙 **GitHub**: [DNikulshin](https://github.com/DNikulshin)
-- 📧 **Email**: d.nikulshin.work@gmail.com
+- 📧 **Email**: d.nikulshin.dev@gmail.com
 
 ---
 
