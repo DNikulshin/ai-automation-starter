@@ -84,3 +84,4 @@ app_title
 2026-05-11 21:35:35 [INFO] src.ingestion: ✅ Marked as processed: test_dental.txt
 2026-05-11 21:35:35 [INFO] src.cli: ✅ Завершено. Обработано: 1
 2026-05-11 21:35:38 [INFO] src.cli: ✨ Нет необработанных файлов. Выход.
+{"timestamp": "2026-08-24T19:51:09+0000", "severity": "ERROR", "name": "src.cli", "message": "config_failed", "event": "config_failed", "error": "1 validation error for AppConfig\nOPENROUTER_API_KEY\n  Field required [type=missing, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"}
