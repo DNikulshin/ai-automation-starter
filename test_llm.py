@@ -4,9 +4,9 @@
 Загружает конфигурацию из .env, отправляет тестовый запрос и выводит ответ.
 """
 
+import json
 import os
 import sys
-import json
 from pathlib import Path
 
 import requests
@@ -51,7 +51,9 @@ def test_connection() -> bool:
         )
         if resp.status_code == 200:
             data = resp.json()
-            print(f"✅ Ключ валиден. Провайдер: {data.get('data', {}).get('provider_name', 'N/A')}")
+            print(
+                f"✅ Ключ валиден. Провайдер: {data.get('data', {}).get('provider_name', 'N/A')}"
+            )
             return True
         else:
             print(f"❌ Ошибка авторизации: {resp.status_code} — {resp.text}")
@@ -86,7 +88,8 @@ def test_llm_completion(prompt: str) -> dict | None:
             print(f"⚠️ Попытка {attempt}/{MAX_RETRIES} не удалась: {e}")
             if attempt < MAX_RETRIES:
                 import time
-                time.sleep(2 ** attempt)  # экспоненциальная задержка
+
+                time.sleep(2**attempt)  # экспоненциальная задержка
 
     print(f"❌ Все {MAX_RETRIES} попыток исчерпаны. Последняя ошибка: {last_error}")
     return None
@@ -121,7 +124,7 @@ def main():
         if result and "choices" in result:
             content = result["choices"][0]["message"]["content"]
             print(f"✅ Ответ:\n{content.strip()}")
-            
+
             # Сохраняем в файл для отладки (опционально)
             debug_file = Path("test_output.json")
             with open(debug_file, "w", encoding="utf-8") as f:

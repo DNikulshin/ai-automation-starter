@@ -4,6 +4,7 @@ from typing import Any, Dict
 
 logger = logging.getLogger(__name__)
 
+
 class MarkdownExporter:
     def __init__(self, output_dir: Path):
         self.output_dir = output_dir

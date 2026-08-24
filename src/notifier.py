@@ -1,9 +1,11 @@
 import logging
-import requests
 from pathlib import Path
 from typing import Any, Dict, Optional
 
+import requests
+
 logger = logging.getLogger(__name__)
+
 
 class TelegramNotifier:
     def __init__(self, bot_token: str, chat_id: str, enabled: bool = True):
@@ -17,7 +19,11 @@ class TelegramNotifier:
         try:
             resp = requests.post(
                 self.url,
-                json={"chat_id": self.chat_id, "text": message, "parse_mode": parse_mode},
+                json={
+                    "chat_id": self.chat_id,
+                    "text": message,
+                    "parse_mode": parse_mode,
+                },
                 timeout=10,
             )
             resp.raise_for_status()
@@ -30,7 +36,9 @@ class TelegramNotifier:
         if unprocessed_count == 0:
             self.send("🟢 *Пайплайн готов*. Очередь пуста.")
         else:
-            self.send(f"🚀 *Запуск пайплайна*\nВ обработке: `{unprocessed_count}` файлов")
+            self.send(
+                f"🚀 *Запуск пайплайна*\nВ обработке: `{unprocessed_count}` файлов"
+            )
 
     def notify_success(self, filename: str, data: Dict[str, Any]) -> None:
         patient = data.get("patient_name") or data.get("summary", "Неизвестный")

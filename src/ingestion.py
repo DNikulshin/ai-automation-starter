@@ -4,6 +4,7 @@ from typing import Iterator
 
 logger = logging.getLogger(__name__)
 
+
 class FileIngestion:
     def __init__(self, input_dir: Path, processed_dir: Path | None = None):
         self.input_dir = input_dir
@@ -13,7 +14,10 @@ class FileIngestion:
     def get_unprocessed_files(self) -> Iterator[Path]:
         self.input_dir.mkdir(parents=True, exist_ok=True)
         for file_path in self.input_dir.glob("*.txt"):
-            if file_path.is_file() and not (self.processed_dir / file_path.name).exists():
+            if (
+                file_path.is_file()
+                and not (self.processed_dir / file_path.name).exists()
+            ):
                 yield file_path
 
     def read_text(self, file_path: Path) -> str:
