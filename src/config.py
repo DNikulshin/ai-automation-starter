@@ -19,7 +19,7 @@ class AppConfig(BaseSettings):
     # === Mock mode (для тестов без расхода токенов) ===
     mock_llm: bool = Field(default=False, alias="MOCK_LLM")
 
-    model_config = ConfigDict(
+    model_config = ConfigDict(  # type: ignore
         env_file=".env",
         populate_by_name=True,
         extra="ignore"  # ← Игнорировать неизвестные поля, чтобы не падать при добавлении новых
